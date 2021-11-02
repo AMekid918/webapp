@@ -18,6 +18,8 @@ class CreatePostsTable extends Migration
             $table-> integer('user_id')-> unsigned()->index();
             $table->text('body');
             $table->timestamps();
+
+            //$table->foreign('')
         });
     }
 
@@ -31,3 +33,4 @@ class CreatePostsTable extends Migration
         Schema::dropIfExists('posts');
     }
 }
+ 

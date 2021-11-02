@@ -23,6 +23,12 @@ class PostFactory extends Factory
     {
         return [
             //
+        'id' => $this -> faker->randomDigit(),
+        'user_id' => $this -> faker->randomDigit(),
+        'body' => $this -> faker->sentence($nbWords = 6, true), 
+        'created_at' => $this->faker->time($format = 'H:i:s', $max = 'now'),
+        'updated_at' => $this->faker->time($format = 'H:i:s', $max = 'now')
+
         ];
     }
 }
