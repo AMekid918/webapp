@@ -19,7 +19,13 @@ class CreatePostsTable extends Migration
             $table->text('body');
             $table->timestamps();
 
-            //$table->foreign('')
+            $table->bigInteger('comment_id')->unsigned();
+
+            $table->foreign('comment_id')->references('id')->on('comments')
+                ->onDelete('cascade')->onUpdate('cascade');
+
+
+            
         });
     }
 
