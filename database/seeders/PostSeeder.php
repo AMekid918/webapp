@@ -16,7 +16,7 @@ class PostSeeder extends Seeder
     {
         
         $p = new Post;
-        //$p-> id = '1';
+        $p-> id = '1';
         $p-> user_id = '1';
         $p-> body = 'Example comment';
         $p-> created_at = '22:22:22';
@@ -30,3 +30,5 @@ class PostSeeder extends Seeder
 
     }
 }
+
+

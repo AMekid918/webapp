@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         //
 
         $u = new User;
-        //$u-> id = '1';
+        $u-> id = '1';
         $u-> name = 'admin';
         $u-> email = 'example@gmail.com';
         $u-> email_verified_at = '22:22:22';
