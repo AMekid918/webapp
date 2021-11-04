@@ -14,12 +14,18 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        //
-        //** 
         
-        
-    
-        $post = Post::factory()->count(10)->create();
+        $p = new Post;
+        //$p-> id = '1';
+        $p-> user_id = '1';
+        $p-> body = 'Example comment';
+        $p-> created_at = '22:22:22';
+        $p-> created_at = '22:22:22';
+        $p->user_id = 1;
+
+        $p->save();
+
+        $post = Post::factory()->count(10)->create(['user_id' => 1]);
 
 
     }
