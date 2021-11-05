@@ -21,10 +21,10 @@ class CommentSeeder extends Seeder
         $c-> body = 'this is a comment';
         $c-> created_at = '22:22:22';
         $c-> created_at = '22:22:22';
-        $c-> user_id = 1;
-        $c-> post_id = 1;
+        $c-> user_id = 11;
+        $c-> post_id = 11;
         $c->save();
 
-        $comment = Comment::factory()->count(10)->create(['user_id' => 1, 'post_id' => 1]);
+        $comment = Comment::factory()->count(10)->create();
     }
 }

@@ -21,11 +21,11 @@ class PostSeeder extends Seeder
         $p-> body = 'Example comment';
         $p-> created_at = '22:22:22';
         $p-> created_at = '22:22:22';
-        $p->user_id = 1;
+        $p->user_id = 11;
 
         $p->save();
 
-        $post = Post::factory()->count(10)->create(['user_id' => 1]);
+        $post = Post::factory()->count(10)->create();
 
 
     }

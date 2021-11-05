@@ -22,14 +22,11 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            //
-            //'id' => $this -> faker->randomDigit(),
-            //'user_id' => $this -> faker->randomDigit(),
-            //'post_id' => $this -> faker->randomDigit(),
+            'user_id' => $this -> faker -> numberBetween(1,10),
+            'post_id' => $this -> faker -> numberBetween(1,10),
             'body' => $this -> faker->sentence($nbWords = 6, true), 
             'created_at' => $this->faker->time($format = 'H:i:s', $max = 'now'),
             'updated_at' => $this->faker->time($format = 'H:i:s', $max = 'now')
-
 
         ];
     }
