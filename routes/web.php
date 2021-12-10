@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\DependencyInjection\RegisterControllerArgumentLocatorsPass;
@@ -10,7 +11,7 @@ Route::get('/posts', function () {
 
 //Route::get('/home',function(){
     
-
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/register', [RegistrationController::class, 'index'])->name('register');
 Route::post('/register', [RegistrationController::class, 'store']);
 
