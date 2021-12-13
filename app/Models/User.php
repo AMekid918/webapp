@@ -52,7 +52,7 @@ class User extends Authenticatable
     }
 
     public function likes(){
-        return $this->hasMany(likes::class);
+        return $this->hasMany(Like::class);
     }
 
 }

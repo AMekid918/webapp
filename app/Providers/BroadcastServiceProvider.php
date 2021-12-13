@@ -7,6 +7,15 @@ use Illuminate\Support\ServiceProvider;
 
 class BroadcastServiceProvider extends ServiceProvider
 {
+
+
+    protected $policies = [
+        Post::class => 'App\Policies\ModelPolicy'
+    ];
+
+
+
+
     /**
      * Bootstrap any application services.
      *

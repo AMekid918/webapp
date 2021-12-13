@@ -7,11 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+
     use HasFactory;
 
+    protected $fillable = [
+        'body', 'image_path'
+    ];
+
+    public function likedBy(User $user){
+        return $this->likes->contains('user_id', $user->id);
+    }
 
 
-    public function users(){
+
+
+    public function user(){
         return $this->belongsTo(User::class);
     }
 
