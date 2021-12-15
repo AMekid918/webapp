@@ -7,7 +7,14 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    //
+
+
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+
+
     public function index(){
 
         $posts = Post::with(['user', 'likes'])->orderBy('created_at', 'desc')->paginate(2);
@@ -17,6 +24,9 @@ class PostController extends Controller
         ]);
     }
 
+
+
+
     public function store(Request $request){
 
        
@@ -25,10 +35,21 @@ class PostController extends Controller
             'image' => 'mimes:jpg,png,jpeg|max:5048'
         ]);
 
-        $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();  
+        if ($request->image != null){
+            $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();  
+            $request->image->move(public_path('images'), $newImageName);
 
-    
-        $request->image->move(public_path('images'), $newImageName);
+            $request->user()->posts()->create([
+                'body' => $request->body,
+                'image_path' => $newImageName
+            ]);
+        }
+        else{
+            $request->user()->posts()->create([
+                'body' => $request->body,
+                'image_path' => ''
+            ]);
+        }
 
         
         //$post = Post::create([
@@ -36,11 +57,34 @@ class PostController extends Controller
         //    'image_path' => $newImageName
         //]);
 
-        $request->user()->posts()->create([
-            'body' => $request->body,
-            'image_path' => $newImageName
-        ]);
+        
 
+        return back();
+    }
+
+
+    public function show(Post $post){
+        return view('posts.postView', [
+            'post'=>$post
+        ]);
+    }
+
+    public function update(Post $id){
+
+        //validate as usual
+        request()->validate([
+             'body' => 'required',
+             'image' => 'mimes:jpg,png,jpeg|max:5048'
+            ]);
+    
+        //Now instead of just creating a new one we are going to update the one we want
+        Post::find($id)->update([
+            'body' => request('body'),
+            'description' => request('image')
+        ]);
+    
+        //some fancy feedback message       
+    
         return back();
     }
 

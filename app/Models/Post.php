@@ -9,7 +9,7 @@ class Post extends Model
 {
 
     use HasFactory;
-
+    
     protected $fillable = [
         'body', 'image_path'
     ];
@@ -29,6 +29,6 @@ class Post extends Model
         return $this->hasMany(Like::class);
     }
     public function comments(){
-        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
+        return $this->hasMany(Comment::class);
     }
 }
