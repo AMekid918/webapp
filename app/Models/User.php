@@ -64,4 +64,8 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
     }
 
+    public function username(){
+        return $this->hasOne(Username::class);
+    }
+
 }
