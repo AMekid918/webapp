@@ -15,7 +15,7 @@
         alt="">
 
 
-    <p class="mb-2 mt-4">"{{$post->body}}"</p>
+    <p class="mb-2 mt-2">"{{$post->body}}"</p>
     
         
     <div class="flex items-center">
@@ -36,9 +36,6 @@
 
 
 
-            <a href="{{route('posts.updatee', $post->id)}}">Edit</a>
-
-
             <form action="{{route('comments', $post) }}" method="get" class="mr-2">
                 @csrf
                 <button type="submit" class="text-blue-500">View Comments</button>
@@ -54,8 +51,11 @@
                 @method('DELETE')
                 <button type="submit" class="text-blue-500">Delete</button>
             </form>
+            
         </div> 
         @endcan
+        
         <span>{{$post->likes->count()}} {{Str::plural('like', $post->likes->count()) }}</span>
     </div> 
+    <hr />
 </div>

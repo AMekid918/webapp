@@ -15,15 +15,7 @@ class PostSeeder extends Seeder
     public function run()
     {
         
-        $p = new Post;
-        $p-> id = '1';
-        $p-> user_id = '1';
-        $p-> body = 'Example comment';
-        $p-> created_at = '22:22:22';
-        $p-> created_at = '22:22:22';
-        $p->user_id = 11;
 
-        $p->save();
 
         $post = Post::factory()->count(10)->create();
 

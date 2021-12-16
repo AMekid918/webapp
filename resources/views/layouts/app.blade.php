@@ -9,7 +9,7 @@
 
 
     </head>
-    <body class = "bg-gray-200 bg-opacity-100">
+    <body class = "bg-blue-200 bg-opacity-100">
         <nav class="p-6 bg-white flex justify-between mb-6">
 
             <ul class = "flex items-center">
@@ -21,6 +21,8 @@
                 </li>
 
             </ul>
+
+            <p class="italic font-weight-bold text-2xl">Social Network</p>
 
             <ul class = "flex items-center">
                 

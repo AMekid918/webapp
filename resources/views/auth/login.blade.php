@@ -4,6 +4,7 @@
 @section('content')
     <div class= "flex justify-center">
         <div class = "w-4/12 bg-white p-6 rounded-lg">
+            <h1 class="mb-5 text-3xl">Login</h1>
 
             @if (session('status'))
                 <div class="bg-red-500 p-4 rounded-lg mb-6 text-white text-center">
