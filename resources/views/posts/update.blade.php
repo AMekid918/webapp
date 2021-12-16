@@ -5,7 +5,7 @@
         <div class = "w-5/12 bg-white p-6 rounded-lg">
 
             @auth
-            <form action="{{route('posts.update', $post->id)}}" method="post" class="mr-2"">
+            <form action="{{route('updating', $post->id)}}" method="post" class="mr-2"">
                 @csrf
                 @method('PATCH')
                 <div class="mb-3">
@@ -21,21 +21,19 @@
                     @enderror
 
                 </div>
-                // Here goes the edit form that can be exactly like your create post but with the values of the post you are editing
+                <div>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded font-medium">
+                        Post
+                    </button>
+                </div>
             </form>
+
+
+
             @endauth
-
-
-
-        <form action="{{route('posts')}}" method="post" class="mb-4" enctype="multipart/form-data">
             
 
-            <div>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded font-medium">
-                    Post
-                </button>
-            </div>
-
+            
         </form>
         </div>
     </div>

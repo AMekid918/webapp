@@ -3,6 +3,7 @@
 @section('content')
     <div class= "flex justify-center">
         <div class = "w-5/12 bg-white p-6 rounded-lg">
+            <h1 class="mb-5 text-2xl">Posts</h1>
         <form action="{{route('posts')}}" method="post" class="mb-4" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

@@ -9,14 +9,26 @@
 
             <x-post :post="$post" />
             <hr />
-            <h1 class="text-2xl mt-5 mb-10">Display Comments</h1>
+            <h1 class="text-2xl mt-5 mb-10">Comments</h1>
+            @if ($comments->count())
+                @foreach ($comments as $comment)
+                    <div class="mb-4">
+                        <a href="{{route('users.posts', $post->user)}}" class="font-bold">{{$post->user->name}} </a><span class="text-grey-600 text-sm">
+                            {{$post->created_at->diffForHumans()}} </span>
+                        </a>
+                        <p class="mb-2 mt-4">"{{$comment->body}}"</p>
 
-            
-   
+                    </div>
+                @endforeach
+                
+            @else 
+                <p class="mb-4">There are no comments yet!</p>
+            @endif 
+
             <hr />
             <h4 class="text-2xl mt-5 mb-5">Add comment</h4>
 
-            <form action="{{route('comments.store', $post->id)}}" method="post" class="mr-2 mt-2">
+            <form action="{{route('comments', $post->id)}}" method="post" class="mr-2 mt-2">
                 @csrf
                 <div class="form-group">
                     <input type="hidden" name="body" class="form-control" />
@@ -41,6 +53,7 @@
                     </button>
                 </div>
             </form>
+            
 
         </div>
     </div>

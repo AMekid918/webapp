@@ -17,11 +17,17 @@ class PostController extends Controller
 
     public function index(){
 
-        $posts = Post::with(['user', 'likes'])->orderBy('created_at', 'desc')->paginate(2);
+        $posts = Post::with(['user', 'likes'])->orderBy('created_at', 'desc')->paginate(10);
 
         return view('posts.index', [
             'posts' => $posts
         ]);
+    }
+
+    public function goto(Post $post){
+        $posts = Post::where('id', $post->id)->get();
+
+        return view('posts.update');
     }
 
 
@@ -69,24 +75,14 @@ class PostController extends Controller
         ]);
     }
 
+
     public function update(Post $id){
 
-        //validate as usual
-        request()->validate([
-             'body' => 'required',
-             'image' => 'mimes:jpg,png,jpeg|max:5048'
-            ]);
-    
-        //Now instead of just creating a new one we are going to update the one we want
-        Post::find($id)->update([
-            'body' => request('body'),
-            'description' => request('image')
-        ]);
-    
-        //some fancy feedback message       
-    
-        return back();
+        dd('hello');
     }
+
+
+
 
     public function destroy(Post $post){
 

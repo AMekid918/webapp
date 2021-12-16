@@ -34,15 +34,16 @@
                 </form>
             @endif 
 
-            <form action="{{route('posts.update', $post->id)}}" method="post" class="mr-2"">
+
+
+            <a href="{{route('posts.updatee', $post->id)}}">Edit</a>
+
+
+            <form action="{{route('comments', $post) }}" method="get" class="mr-2">
                 @csrf
-                @method('PATCH')
-                <button type="submit" class="text-blue-500">Edit</button>
+                <button type="submit" class="text-blue-500">View Comments</button>
             </form>
 
-
-            
-            <a href="{{route('posts.show', $post)}}" class="text-blue-500 mr-2">View Comments</a>
         
         @endauth
 

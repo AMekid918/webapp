@@ -38,14 +38,16 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/register', [RegistrationController::class, 'index'])->name('register');
 Route::post('/register', [RegistrationController::class, 'store']);
 
-Route::get('/posts/{post}/comments', [PostController::class, 'show'])->name('posts.show');
-Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+//Route::get('/posts/{post}/comments', [PostController::class, 'show'])->name('posts.show');
+Route::get('/posts/{post}/comments', [CommentController::class, 'index'])->name('comments');
+Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::post('/posts', [PostController::class, 'store']);
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
-Route::patch('/posts/update/{post}', [PostController::class, 'update'])->name('posts.update');
 
+Route::get('/posts/update/{post}', [PostController::class, 'goto'])->name('posts.updatee');
+Route::patch('/posts/update/{post}', [PostController::class, 'update'])->name('updating');
 
 
 Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
